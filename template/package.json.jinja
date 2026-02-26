@@ -1,0 +1,72 @@
+{
+    "name": "{{ project_name }}",
+    "version": "{{ project_version }}",
+    "description": "{{ project_description }}",
+    "keywords": [
+        "{{ project_keywords.split(',')|join('",\n"') }}"
+    ],
+    "author": {
+        "name": "{{ copyright_holder_name }}",
+        "email": "{{ copyright_holder_email }}"
+    },
+    "homepage": "https://github.com/{{ vcs_github_path }}#readme",
+    "bugs": {
+        "url": "https://github.com/{{ vcs_github_path }}/issues",
+        "email": "{{ copyright_holder_email }}"
+    },
+    "license": "{{ copyright_license }}",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/{{ vcs_github_path }}.git"
+    },
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview",
+        "lint": "biome check .",
+        "lint:fix": "biome check --write .",
+        "format": "biome format --write .",
+        "typecheck": "vue-tsc --noEmit",
+        "test": "vitest run",
+        "test:watch": "vitest",
+        "test:coverage": "vitest run --coverage",
+        "prepare": "simple-git-hooks",
+        "changeset": "changeset",
+        "version": "changeset version",
+        "tauri": "tauri"
+    },
+    "dependencies": {
+        "@tauri-apps/api": "^2",
+        "@tauri-apps/plugin-opener": "^2",
+        "vue": "^3.5.38",
+        "vue-router": "^5.1.0"
+    },
+    "devDependencies": {
+        "@biomejs/biome": "^2.5.0",
+        "@changesets/cli": "^2.31.0",
+        "@vitejs/plugin-vue": "^6.0.7",
+        "@vitest/coverage-v8": "^4.1.8",
+        "@vue/test-utils": "^2.4.11",
+        "jsdom": "^29.1.1",
+        "lint-staged": "^17.0.7",
+        "simple-git-hooks": "^2.13.1",
+        "typescript": "6.0.3",
+        "vite": "^8.0.16",
+        "vitest": "^4.1.8",
+        "vue-tsc": "^3.3.5",
+        "@tauri-apps/cli": "^2"
+    },
+    "engines": {
+        "node": ">=22"
+    },
+    "private": true,
+    "packageManager": "pnpm@11.6.0",
+    "lint-staged": {
+        "*": [
+            "biome check --write --no-errors-on-unmatched"
+        ]
+    },
+    "simple-git-hooks": {
+        "pre-commit": "npx lint-staged"
+    }
+}

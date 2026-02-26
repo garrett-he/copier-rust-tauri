@@ -16,4 +16,8 @@ def base_answers() -> dict[str, str]:
         'vcs_github_path': f'{holder.lower().replace(" ", "-")}/test-project',
         'copyright_holder_name': holder,
         'copyright_holder_email': chance.email(),
+        'project_version': '0.1.0',
+        'project_keywords': 'cli, tool, rust',
+        'project_package': 'test_project_lib',
+        'project_identifier': 'com.test-project.app',
     }

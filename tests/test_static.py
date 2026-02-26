@@ -8,9 +8,38 @@ if TYPE_CHECKING:
     from pytest_copie.plugin import Copie
 
 STATIC_FILES = [
+    # Root config files
     '.editorconfig',
     '.gitattributes',
     '.gitignore',
+    'biome.json',
+    'justfile',
+    'pnpm-workspace.yaml',
+    'tsconfig.json',
+    'vite.config.ts',
+    'vitest.config.ts',
+    # Public assets
+    'public/tauri.svg',
+    'public/vite.svg',
+    # Src directory
+    'src/App.vue',
+    'src/assets/vue.svg',
+    'src/main.ts',
+    'src/router/index.ts',
+    'src/types/env.d.ts',
+    'src/types/tauri.d.ts',
+    'src/views/HomeView.vue',
+    # Tests
+    'tests/App.test.ts',
+    'tests/HomeView.test.ts',
+    'tests/__mocks__/fileMock.ts',
+    'tests/router.test.ts',
+    # Tauri backend
+    'src-tauri/.gitignore',
+    'src-tauri/capabilities/default.json',
+    'src-tauri/rustfmt.toml',
+    'src-tauri/src/lib.rs',
+    'src-tauri/tarpaulin.toml',
 ]
 
 

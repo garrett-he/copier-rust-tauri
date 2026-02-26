@@ -1,0 +1,73 @@
+set positional-arguments
+
+@_default:
+    just --list --unsorted
+
+# Install frontend dependencies
+install-web:
+    pnpm install
+
+# Install Rust dependencies
+install-rust:
+    cargo fetch --manifest-path src-tauri/Cargo.toml
+
+# Install all dependencies
+install:
+    just install-web
+    just install-rust
+
+# Run linters for frontend
+lint-web:
+    pnpm run lint
+    pnpm run typecheck
+
+# Run linters for Rust
+lint-rust:
+    cargo clippy --manifest-path src-tauri/Cargo.toml --all-targets --all-features -- -D warnings
+
+# Run linters for all
+lint:
+    just lint-web
+    just lint-rust
+
+# Run formatters for frontend
+format-web:
+    pnpm run format
+
+# Run formatters for Rust
+format-rust:
+    cargo fmt --manifest-path src-tauri/Cargo.toml
+
+# Run formatters for all
+format:
+    just format-web
+    just format-rust
+
+# Run frontend tests
+test-web:
+    pnpm run test:coverage
+
+# Run Rust tests
+test-rust:
+    cargo tarpaulin --manifest-path src-tauri/Cargo.toml --exclude-files src/main.rs --out Stdout --fail-under 80 --timeout 300
+
+# Run all tests
+test:
+    just test-web
+    just test-rust
+
+# Run frontend server
+dev-web:
+    pnpm run dev
+
+# Run Tauri
+dev:
+    pnpm tauri dev
+
+# Build frontend
+build-web:
+    pnpm run build
+
+# Build Tauri
+build-dist:
+    pnpm tauri build
