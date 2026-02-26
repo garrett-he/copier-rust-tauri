@@ -17,14 +17,18 @@ project_package:
     Project package must start with a letter or underlines, followed one or more letters, digits or underlines.
     {% endif %}
 
-  project_identifier:
-    type: str
-    help: "Identifier of this project:"
-    default: "{{ project_name }}"
-    validator: >-
-      {% if not project_identifier %}
-      Project identifier cannot be empty.
-      {% endif %}
+project_identifier:
+  type: str
+  help: "Identifier of this project:"
+  default: "{{ project_name }}"
+  validator: >-
+    {% if not project_identifier %}
+    Project identifier cannot be empty.
+    {% endif %}
+
+project_keywords:
+  type: str
+  help: "Keywords of this project:"
 
 project_description:
   type: str
