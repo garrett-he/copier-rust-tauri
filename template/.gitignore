@@ -28,6 +28,7 @@ node_modules/
 dist/
 coverage/
 *.local
+tsconfig.tsbuildinfo
 
 # os
 .DS_Store

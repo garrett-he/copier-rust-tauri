@@ -27,8 +27,8 @@ def test_cargo_toml_generated(copie: Copie, base_answers: dict[str, str]) -> Non
     assert f'name = "{base_answers["project_package"]}"' in content
 
 
-def test_cargo_toml_edition_is_year(copie: Copie, base_answers: dict[str, str]) -> None:
-    """Test that edition field is rendered from copyright_year."""
+def test_cargo_toml_edition_is_2021(copie: Copie, base_answers: dict[str, str]) -> None:
+    """Test that edition field is hardcoded to 2021."""
     result = copie.copy(extra_answers=base_answers)
 
     assert result.exit_code == 0
@@ -36,6 +36,4 @@ def test_cargo_toml_edition_is_year(copie: Copie, base_answers: dict[str, str]) 
 
     cargo = result.project_dir / 'src-tauri' / 'Cargo.toml'
     content = cargo.read_text()
-    # edition comes from copyright_year which is an int
-    year = result.answers['copyright_year']
-    assert f'edition = "{year}"' in content
+    assert 'edition = "2021"' in content

@@ -69,5 +69,5 @@ build-web:
     pnpm run build
 
 # Build Tauri
-build-dist:
+build:
     pnpm tauri build

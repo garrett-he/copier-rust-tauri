@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 
 
 def test_build_rs_generated(copie: Copie, base_answers: dict[str, str]) -> None:
-    """Test that build.rs is generated with project_package call."""
+    """Test that build.rs is generated with tauri_build call."""
     result = copie.copy(extra_answers=base_answers)
 
     assert result.exit_code == 0
@@ -19,4 +19,4 @@ def test_build_rs_generated(copie: Copie, base_answers: dict[str, str]) -> None:
     build = result.project_dir / 'src-tauri' / 'build.rs'
     assert build.exists()
     content = build.read_text()
-    assert f'{base_answers["project_package"]}::build()' in content
+    assert 'tauri_build::build()' in content
